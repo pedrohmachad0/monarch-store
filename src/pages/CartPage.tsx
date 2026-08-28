@@ -1,0 +1,8 @@
+import { Link } from 'react-router-dom';
+import { useCart } from '../contexts/CartContext';
+
+export function CartPage() {
+  const { items, removeItem, clearCart } = useCart();
+  const total = items.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+  return <main className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8"><h1 className="text-4xl font-semibold">Carrinho</h1>{items.length === 0 ? <div className="py-16 text-center text-neutral-400"><p>Seu carrinho está vazio.</p><Link to="/catalogo" className="mt-5 inline-block underline text-white">Explorar produtos</Link></div> : <div className="mt-10 space-y-4">{items.map((item) => <div key={item.product.id} className="flex items-center justify-between gap-4 rounded-xl border border-white/10 p-4"><div><p className="font-medium">{item.product.name}</p><p className="text-sm text-neutral-500">{item.size} · {item.color}</p></div><div className="flex items-center gap-5"><span>R$ {item.product.price.toFixed(2).replace('.', ',')}</span><button onClick={() => removeItem(item.product.id)} className="text-sm text-neutral-400 hover:text-white">Remover</button></div></div>)}<div className="flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between"><strong>Total: R$ {total.toFixed(2).replace('.', ',')}</strong><div className="flex gap-3"><button onClick={clearCart} className="rounded-full border border-white/20 px-5 py-2 text-sm">Limpar</button><Link to="/checkout" className="rounded-full bg-white px-5 py-2 text-sm font-semibold text-black">Finalizar</Link></div></div></div>}</main>;
+}
