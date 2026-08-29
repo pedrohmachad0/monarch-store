@@ -2,16 +2,11 @@ import { ArrowUpRight, Heart } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../types/product';
 import { useFavorites } from '../contexts/FavoritesContext';
-import { media } from '../data/media';
+import { getProductImages } from '../data/media';
 import { formatBRL } from '../utils/currency';
 
-const productImages: Record<string, string> = {
-  'camisa-oxford-monarch': media.products.camisaOxford,
-  'camiseta-essential-heavy': media.products.camisetaEssential,
-};
-
 export function ProductCard({ product }: { product: Product }) {
-  const image = product.images[0] ?? productImages[product.slug];
+  const image = getProductImages(product)[0];
   const { isFavorite, toggleFavorite } = useFavorites();
   const favorite = isFavorite(product.id);
 
