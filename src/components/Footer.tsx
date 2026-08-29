@@ -1,13 +1,10 @@
+import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
 export function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-neutral-950 text-neutral-400">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4 lg:px-8">
-        <div><p className="font-semibold tracking-[0.2em] text-white">MONARCH</p><p className="mt-3 text-sm">Moda masculina com presença.</p></div>
-        <div><h3 className="text-sm font-medium text-white">Comprar</h3><p className="mt-3 text-sm">Coleção · Old Money · Streetwear</p></div>
-        <div><h3 className="text-sm font-medium text-white">Atendimento</h3><p className="mt-3 text-sm">Envios · Trocas · Contato</p></div>
-        <div><h3 className="text-sm font-medium text-white">Monarch</h3><p className="mt-3 text-sm">Qualidade, estilo e identidade.</p></div>
-      </div>
-      <div className="border-t border-white/10 px-4 py-5 text-center text-xs">© {new Date().getFullYear()} Monarch Store. Todos os direitos reservados.</div>
+    <footer className="border-t border-white/10 bg-[#0d0d0d] text-neutral-400">
+      <div className="mx-auto max-w-[1440px] px-5 py-16 sm:px-10 lg:px-16 lg:py-20"><div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]"><div><Link to="/" className="text-lg font-semibold tracking-[0.26em] text-white">MONARCH<span className="text-[#c2ae8b]">.</span></Link><p className="mt-5 max-w-xs text-sm leading-6 text-neutral-500">Moda masculina com presença. Uma curadoria de clássicos e novas formas para vestir o agora.</p><p className="mt-10 font-mono text-[10px] uppercase tracking-[0.18em] text-neutral-600">São Paulo / Brasil — Est. 2026</p></div><div><h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white">Comprar</h3><div className="mt-5 grid gap-3 text-sm"><Link to="/catalogo" className="transition hover:text-white">Catálogo</Link><Link to="/categoria/old-money" className="transition hover:text-white">Old Money</Link><Link to="/categoria/streetwear" className="transition hover:text-white">Streetwear</Link><Link to="/categoria/essentials" className="transition hover:text-white">Essentials</Link></div></div><div><h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white">Atendimento</h3><div className="mt-5 grid gap-3 text-sm"><a href="mailto:hello@monarch.store" className="transition hover:text-white">Fale conosco</a><span>Trocas e devoluções</span><span>Guia de medidas</span><span>FAQ</span></div></div><div><h3 className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white">Siga a Monarch</h3><div className="mt-5 grid gap-3 text-sm"><a href="#instagram" className="flex items-center gap-2 transition hover:text-white">Instagram <ArrowUpRight size={13} /></a><a href="#pinterest" className="flex items-center gap-2 transition hover:text-white">Pinterest <ArrowUpRight size={13} /></a><a href="#tiktok" className="flex items-center gap-2 transition hover:text-white">TikTok <ArrowUpRight size={13} /></a></div></div></div><div className="mt-16 flex flex-col gap-4 border-t border-white/10 pt-5 text-[10px] uppercase tracking-[0.16em] text-neutral-600 sm:flex-row sm:items-center sm:justify-between"><span>© {new Date().getFullYear()} Monarch Store.</span><span>Made for the ones who set the tone.</span></div></div>
     </footer>
   );
 }
