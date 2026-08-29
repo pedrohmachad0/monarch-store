@@ -8,7 +8,10 @@ export const products: Product[] = [
     description: 'Camisa masculina de inspiração clássica para composições sofisticadas.',
     price: 189.9,
     category: 'old-money',
-    images: [],
+    images: [
+      '/images/products/camisa-oxford/frente.webp',
+      '/images/products/camisa-oxford/costas.webp',
+    ],
     sizes: ['P', 'M', 'G', 'GG'],
     colors: ['Branco', 'Azul-marinho'],
     stock: 20,

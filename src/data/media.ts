@@ -9,7 +9,6 @@ export const media = {
     essentials: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=85',
   },
   productFallbacks: {
-    'camisa-oxford-monarch': 'https://images.unsplash.com/photo-1596755389378-c31d21fd1273?auto=format&fit=crop&w=900&q=85',
     'camiseta-essential-heavy': 'https://images.unsplash.com/photo-1503341504253-dff4815485f1?auto=format&fit=crop&w=900&q=85',
   },
 } as const;
