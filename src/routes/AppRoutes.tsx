@@ -6,6 +6,7 @@ import { CartPage } from '../pages/CartPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { LoginPage } from '../pages/LoginPage';
 import { AccountPage } from '../pages/AccountPage';
+import { FavoritesPage } from '../pages/FavoritesPage';
 
 export function AppRoutes() {
   return <Routes>
@@ -17,5 +18,6 @@ export function AppRoutes() {
     <Route path="/checkout" element={<CheckoutPage />} />
     <Route path="/login" element={<LoginPage />} />
     <Route path="/conta" element={<AccountPage />} />
+    <Route path="/favoritos" element={<FavoritesPage />} />
   </Routes>;
 }

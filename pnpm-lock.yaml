@@ -9,41 +9,41 @@ importers:
   .:
     dependencies:
       '@vitejs/plugin-react':
-        specifier: latest
+        specifier: 6.1.1
         version: 6.1.1(vite@8.2.2(@types/node@26.4.0)(jiti@2.7.0))
       lucide-react:
-        specifier: ^1.35.0
+        specifier: 1.35.0
         version: 1.35.0(react@19.2.8)
       react:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8
       react-dom:
-        specifier: latest
+        specifier: 19.2.8
         version: 19.2.8(react@19.2.8)
       react-router-dom:
-        specifier: latest
+        specifier: 7.18.3
         version: 7.18.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
     devDependencies:
       '@tailwindcss/vite':
-        specifier: latest
+        specifier: 4.3.3
         version: 4.3.3(vite@8.2.2(@types/node@26.4.0)(jiti@2.7.0))
       '@types/node':
-        specifier: ^26.4.0
+        specifier: 26.4.0
         version: 26.4.0
       '@types/react':
-        specifier: ^19.2.18
+        specifier: 19.2.18
         version: 19.2.18
       '@types/react-dom':
-        specifier: ^19.2.5
+        specifier: 19.2.5
         version: 19.2.5(@types/react@19.2.18)
       tailwindcss:
-        specifier: latest
+        specifier: 4.3.3
         version: 4.3.3
       typescript:
-        specifier: latest
+        specifier: 7.0.2
         version: 7.0.2
       vite:
-        specifier: latest
+        specifier: 8.2.2
         version: 8.2.2(@types/node@26.4.0)(jiti@2.7.0)
 
 packages:
