@@ -4,19 +4,17 @@ import { Link, useParams } from 'react-router-dom';
 import { ProductCard } from '../components/ProductCard';
 import { useCart } from '../contexts/CartContext';
 import { useFavorites } from '../contexts/FavoritesContext';
-import { media } from '../data/media';
+import { getProductImages } from '../data/media';
 import { products } from '../data/products';
 import type { Product } from '../types/product';
 import { formatBRL } from '../utils/currency';
 
-const productImages: Record<string, string> = {
-  'camisa-oxford-monarch': media.products.camisaOxford,
-  'camiseta-essential-heavy': media.products.camisetaEssential,
-};
-
 function ProductGallery({ product }: { product: Product }) {
-  const image = product.images[0] ?? productImages[product.slug];
-  return <div className="grid gap-3 sm:grid-cols-[96px_1fr] sm:gap-4"><div className="order-2 flex gap-3 overflow-x-auto sm:order-1 sm:flex-col">{image && <button type="button" aria-label={`Visualizar imagem de ${product.name}`} className="h-24 w-20 shrink-0 overflow-hidden border border-[#c2ae8b] bg-[#1d1d1d] sm:h-28 sm:w-full"><img src={image} alt="" className="h-full w-full object-cover" /></button>}</div><div className="order-1 aspect-[4/5] overflow-hidden bg-[#1d1d1d] sm:order-2 sm:aspect-[4/5]"><img src={image} alt={product.name} className="h-full w-full object-cover" /></div></div>;
+  const images = getProductImages(product);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedImage = images[selectedIndex];
+  if (!selectedImage) return <div className="aspect-[4/5] bg-[#1d1d1d]" aria-label={`Imagem de ${product.name} indisponível`} />;
+  return <div className={images.length > 1 ? 'grid gap-3 sm:grid-cols-[96px_1fr] sm:gap-4' : ''}>{images.length > 1 && <div className="order-2 flex gap-3 overflow-x-auto sm:order-1 sm:flex-col">{images.map((image, index) => <button type="button" key={image} aria-label={`Visualizar imagem ${index + 1} de ${product.name}`} aria-pressed={selectedIndex === index} onClick={() => setSelectedIndex(index)} className={`h-24 w-20 shrink-0 overflow-hidden bg-[#1d1d1d] sm:h-28 sm:w-full ${selectedIndex === index ? 'border border-[#c2ae8b]' : 'border border-transparent opacity-60 hover:opacity-100'}`}><img src={image} alt="" className="h-full w-full object-cover" /></button>)}</div>}<div className={`order-1 aspect-[4/5] overflow-hidden bg-[#1d1d1d] ${images.length > 1 ? 'sm:order-2' : ''}`}><img src={selectedImage} alt={product.name} className="h-full w-full object-cover" /></div></div>;
 }
 
 function QuantityControl({ quantity, stock, onChange }: { quantity: number; stock: number; onChange: (quantity: number) => void }) {
