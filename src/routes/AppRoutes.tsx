@@ -1,4 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
+import type { ReactNode } from 'react';
 import { HomePage } from '../pages/HomePage';
 import { CatalogPage } from '../pages/CatalogPage';
 import { ProductPage } from '../pages/ProductPage';
@@ -10,11 +11,26 @@ import { AccountPage } from '../pages/AccountPage';
 import { useAuth } from '../contexts/AuthContext';
 import { Navigate, useLocation } from 'react-router-dom';
 import { FavoritesPage } from '../pages/FavoritesPage';
+import { OrderConfirmationPage } from '../pages/OrderConfirmationPage';
+import { OrdersPage } from '../pages/OrdersPage';
+import { OrderDetailPage } from '../pages/OrderDetailPage';
 
-function ProtectedAccount() {
+function ProtectedRoute({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useAuth();
   const location = useLocation();
-  return isAuthenticated ? <AccountPage /> : <Navigate to="/login" replace state={{ from: location.pathname }} />;
+  return isAuthenticated ? children : <Navigate to="/login" replace state={{ from: location.pathname }} />;
+}
+
+function ProtectedAccount() {
+  return <ProtectedRoute><AccountPage /></ProtectedRoute>;
+}
+
+function ProtectedOrders() {
+  return <ProtectedRoute><OrdersPage /></ProtectedRoute>;
+}
+
+function ProtectedOrderDetail() {
+  return <ProtectedRoute><OrderDetailPage /></ProtectedRoute>;
 }
 
 export function AppRoutes() {
@@ -30,5 +46,8 @@ export function AppRoutes() {
     <Route path="/minha-conta" element={<ProtectedAccount />} />
     <Route path="/conta" element={<ProtectedAccount />} />
     <Route path="/favoritos" element={<FavoritesPage />} />
+    <Route path="/pedido-confirmado" element={<OrderConfirmationPage />} />
+    <Route path="/pedidos" element={<ProtectedOrders />} />
+    <Route path="/pedidos/:id" element={<ProtectedOrderDetail />} />
   </Routes>;
 }
