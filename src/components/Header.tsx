@@ -13,7 +13,7 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const links = [{ label: 'Catálogo', to: '/catalogo' }, { label: 'Old Money', to: '/categoria/old-money' }, { label: 'Streetwear', to: '/categoria/streetwear' }, { label: 'Essentials', to: '/categoria/essentials' }];
+  const links = [{ label: 'Catálogo', to: '/catalogo' }, { label: 'Old Money', to: '/categoria/old-money' }, { label: 'Streetwear', to: '/categoria/streetwear' }, { label: 'Essentials', to: '/categoria/essentials' }, { label: 'Admin', to: '/admin' }];
 
   function submitSearch(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
