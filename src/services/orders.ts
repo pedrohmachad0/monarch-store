@@ -29,6 +29,17 @@ export function getOrder(userId: string, orderId: string) {
   return readOrders(userId).find((order) => order.id === orderId) ?? null;
 }
 
+export function listAllLocalOrders() {
+  const orders: Order[] = [];
+  for (let index = 0; index < window.localStorage.length; index += 1) {
+    const key = window.localStorage.key(index);
+    if (!key?.startsWith(ORDERS_PREFIX)) continue;
+    const userOrders = readOrders(decodeURIComponent(key.slice(ORDERS_PREFIX.length)));
+    orders.push(...userOrders);
+  }
+  return orders.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
+}
+
 export function createOrder({ userId, items, subtotal, address, shipping = 0 }: { userId: string; items: OrderItem[]; subtotal: number; address: OrderAddress; shipping?: number }) {
   const now = new Date();
   const order: Order = {

@@ -14,6 +14,8 @@ import { FavoritesPage } from '../pages/FavoritesPage';
 import { OrderConfirmationPage } from '../pages/OrderConfirmationPage';
 import { OrdersPage } from '../pages/OrdersPage';
 import { OrderDetailPage } from '../pages/OrderDetailPage';
+import { AdminDashboardPage } from '../admin/pages/AdminDashboardPage';
+import { AdminPlaceholderPage } from '../admin/pages/AdminPlaceholderPage';
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -49,5 +51,7 @@ export function AppRoutes() {
     <Route path="/pedido-confirmado" element={<OrderConfirmationPage />} />
     <Route path="/pedidos" element={<ProtectedOrders />} />
     <Route path="/pedidos/:id" element={<ProtectedOrderDetail />} />
+    <Route path="/admin" element={<AdminDashboardPage />} />
+    <Route path="/admin/:section" element={<AdminPlaceholderPage />} />
   </Routes>;
 }
